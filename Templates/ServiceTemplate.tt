@@ -1,0 +1,20 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+using USS.Base.Service;
+using <#= model.RootNamespace #>.Model;
+
+namespace <#= model.RootNamespace #>.Service
+{
+    public class <#= model.ClassName #>Service : BaseService<<#= model.ClassName #>>
+    {
+        private readonly <#= model.RootNamespace.Replace(".","") #>HTTPClient _http;
+        public <#= model.ClassName #>Service(<#= model.RootNamespace.Replace(".","") #>HTTPClient http): base(http.client)
+        {
+            _http = http;
+        }
+    }
+}

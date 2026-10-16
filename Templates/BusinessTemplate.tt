@@ -1,0 +1,21 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+using USS.Base.Business;
+using <#= model.RootNamespace #>.Business.Interface;
+using <#= model.RootNamespace #>.Data.Interface;
+using <#= model.RootNamespace #>.Model;
+
+namespace <#= model.RootNamespace #>.Business
+{
+    public class <#= model.ClassName #>Business : BaseBusiness<<#= model.ClassName #>>, I<#= model.ClassName #>Business
+    {
+        public <#= model.ClassName #>Business(I<#= model.ClassName #>Data data) : base(data)
+        {
+
+        }
+    }
+}

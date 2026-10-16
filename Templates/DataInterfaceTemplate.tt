@@ -1,0 +1,16 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+using USS.Base.Data.Interface;
+using <#= model.RootNamespace #>.Model;
+
+namespace <#= model.RootNamespace #>.Data.Interface
+{
+    public interface I<#= model.ClassName #>Data : IBaseData<<#= model.ClassName #>>
+    {
+        
+    }
+}

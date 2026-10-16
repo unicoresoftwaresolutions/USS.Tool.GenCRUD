@@ -1,0 +1,19 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+using USS.Base.Data;
+using <#= model.RootNamespace #>.Data.Interface;
+using <#= model.RootNamespace #>.Model;
+
+namespace <#= model.RootNamespace #>.Data
+{
+    public partial class <#= model.ClassName #>Data : BaseData<<#= model.ClassName #>>, I<#= model.ClassName #>Data
+    {
+        public <#= model.ClassName #>Data(<#= model.RootNamespace.Replace(".","") #>DBContext dBContext) : base(dBContext)
+        {
+        }
+    }
+}

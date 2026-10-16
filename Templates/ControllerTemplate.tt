@@ -1,0 +1,22 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+using Microsoft.AspNetCore.Mvc;
+using USS.Base.ApiService.Controllers;
+using <#= model.RootNamespace #>.Business.Interface;
+using <#= model.RootNamespace #>.Model;
+
+namespace <#= model.RootNamespace #>.ApiService.Controllers
+{
+   
+    [ApiController]
+    public class <#= model.ClassName #>Controller : BaseAPIController<<#= model.ClassName #>>
+    {
+        public <#= model.ClassName #>Controller(I<#= model.ClassName #>Business business) : base(business)
+        {
+        }
+    }
+}
