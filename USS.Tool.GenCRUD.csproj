@@ -6,8 +6,23 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>GenCRUD</AssemblyName>
-  </PropertyGroup>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>GenCRUD</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
 
+    <PackageId>UnicoreSoftwareSolutions.Tool.GenCRUD</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Title>Generate CRUD UI and API Code</Title>
+    <Authors>Unicore Software Solutions</Authors>
+    <Description> A tool for generating CRUD UI and API code for ASP.NET Core applications.</Description>
+    <PackageTags>aspnetcore;web</PackageTags>
+    <PackageProjectUrl>https://github.com/UnicoreSoftwareSolutions/USS.Tool.GenCRUD</PackageProjectUrl>
+    
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="license.txt" Pack="true" PackagePath="" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.CodeDom" Version="10.0.13" />
   </ItemGroup>
