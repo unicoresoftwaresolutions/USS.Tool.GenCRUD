@@ -12,7 +12,7 @@ namespace <#= model.RootNamespace #>.Data
 {
     public partial class <#= model.ClassName #>Data : BaseData<<#= model.ClassName #>>, I<#= model.ClassName #>Data
     {
-        public <#= model.ClassName #>Data(<#= model.RootNamespace.Replace(".","") #>DBContext dBContext) : base(dBContext)
+        public <#= model.ClassName #>Data(MainDBContext dBContext) : base(dBContext)
         {
         }
     }

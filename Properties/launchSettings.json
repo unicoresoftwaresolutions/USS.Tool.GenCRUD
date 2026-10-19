@@ -2,7 +2,7 @@
   "profiles": {
     "USS.Tool.GenCRUD": {
       "commandName": "Project",
-      "commandLineArgs": "  \"C:\\Users\\Admin\\source\\repos\\USS.Kanakkedu\\USS.Kanakkedu.SQL\\USS.Kanakkedu.SQL.sqlproj\" \"C:\\Users\\Bala\\source\\repos\\unicoresoftwaresolutions\\USS.Kanakkedu\\USS.Kanakkedu.SQL\\USS.Kanakkedu.SQL.sqlproj\" "
+      "commandLineArgs": "  \"C:\\Users\\Admin\\source\\repos\\test\\test.app03\\test.app03.SQL\\test.app03.SQL.sqlproj\" "
     }
   }
 }

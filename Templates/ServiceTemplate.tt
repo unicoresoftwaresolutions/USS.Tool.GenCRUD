@@ -11,8 +11,8 @@ namespace <#= model.RootNamespace #>.Service
 {
     public class <#= model.ClassName #>Service : BaseService<<#= model.ClassName #>>
     {
-        private readonly <#= model.RootNamespace.Replace(".","") #>HTTPClient _http;
-        public <#= model.ClassName #>Service(<#= model.RootNamespace.Replace(".","") #>HTTPClient http): base(http.client)
+        private readonly MainHTTPClient _http;
+        public <#= model.ClassName #>Service(MainHTTPClient http): base(http.client)
         {
             _http = http;
         }

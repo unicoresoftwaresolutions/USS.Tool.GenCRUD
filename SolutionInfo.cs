@@ -80,21 +80,28 @@ namespace USS.Tool.GenCRUD
                     SQLProj.tables.ForEach(table =>
                     {
                         field.Add(new ProjectModel(table));
-                    });                    
-                }
-                
-                var RefFields = field.Where(x => x.Table.Fields.Any(f => f.HasForeignKey)).ToList();
-                foreach(var projModel in RefFields)
-                {
-                    if(projModel.LookUpTables==null) projModel.LookUpTables = new List<SQLTable>();
-                    foreach (var reffield in projModel.References)
+                    });
+                    var RefFields = field.Where(x => x.Table.Fields.Any(f => f.HasForeignKey)).ToList();
+                    foreach (var projModel in RefFields)
                     {
-                        var proj = field.FirstOrDefault(x => x.ClassName == reffield.Reference.TableName);
-                        if (proj == null) continue;
-                        if (proj.LookUpTables == null) proj.LookUpTables = new List<SQLTable>();
-                        proj.LookUpTables.Add(projModel.Table);
+                        if (projModel.LookUpTables == null) projModel.LookUpTables = new List<SQLTable>();
+                        foreach (var reffield in projModel.References)
+                        {
+                            var proj = field.FirstOrDefault(x => x.ClassName == reffield.Reference.TableName);
+                            if (proj == null) continue;
+                            if (proj.LookUpTables == null) proj.LookUpTables = new List<SQLTable>();
+                            else
+                            {
+                                if (proj.LookUpTables.Any(x => x.TableName == projModel.Table.TableName))
+                                {
+                                    continue;
+                                }
+                            }
+                            proj.LookUpTables.Add(projModel.Table);
+                        }
                     }
                 }
+                
                 return field;
             }
         }
@@ -113,6 +120,7 @@ namespace USS.Tool.GenCRUD
                 projModel.GenerateComponent(IsOverRide);
                 GenerateAPIServiceDI(true);
                 GenerateUIServiceDI(true);
+                GenerateMainDBContext(true);
             }
         }
 
@@ -134,6 +142,18 @@ namespace USS.Tool.GenCRUD
             UIServiceDITemplate uiServiceDITemplate = new UIServiceDITemplate(ProjectModels);
             string content = uiServiceDITemplate.TransformText();
             string filePath = Path.Combine(SolutionInfo.Projects.FirstOrDefault(x => x.Name == ProjectNames.Web).Path, "ServiceDI.cs");
+            if (File.Exists(filePath) && !IsOverRide)
+            {
+                return;
+            }
+            File.WriteAllText(filePath, content);
+        }
+
+        public static void GenerateMainDBContext(bool IsOverRide = false)
+        {
+            MainDBContextTemplate mainDBContextTemplate = new MainDBContextTemplate(ProjectModels);
+            string content = mainDBContextTemplate.TransformText();
+            string filePath = Path.Combine(SolutionInfo.Projects.FirstOrDefault(x => x.Name == ProjectNames.Data).Path, "MainDBContext.cs");
             if (File.Exists(filePath) && !IsOverRide)
             {
                 return;

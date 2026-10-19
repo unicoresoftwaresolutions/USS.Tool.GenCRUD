@@ -18,7 +18,7 @@ namespace USS.Tool.GenCRUD.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
+    #line 1 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "18.0.0.0")]
     public partial class DataTemplate : DataTemplateBase
     {
@@ -30,61 +30,55 @@ namespace USS.Tool.GenCRUD.Templates
         {
             this.Write("\r\nusing USS.Base.Data;\r\nusing ");
             
-            #line 8 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
+            #line 8 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Data.Interface;\r\nusing ");
             
-            #line 9 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
+            #line 9 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Model;\r\n\r\nnamespace ");
             
-            #line 11 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
+            #line 11 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Data\r\n{\r\n    public partial class ");
             
-            #line 13 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
+            #line 13 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write("Data : BaseData<");
             
-            #line 13 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
+            #line 13 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write(">, I");
             
-            #line 13 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
+            #line 13 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write("Data\r\n    {\r\n        public ");
             
-            #line 15 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
+            #line 15 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
-            this.Write("Data(");
-            
-            #line 15 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\DataTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.RootNamespace.Replace(".","")));
-            
-            #line default
-            #line hidden
-            this.Write("DBContext dBContext) : base(dBContext)\r\n        {\r\n        }\r\n    }\r\n}\r\n");
+            this.Write("Data(MainDBContext dBContext) : base(dBContext)\r\n        {\r\n        }\r\n    }\r\n}\r\n" +
+                    "");
             return this.GenerationEnvironment.ToString();
         }
     }
