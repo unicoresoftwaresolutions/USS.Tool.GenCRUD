@@ -21,7 +21,7 @@ namespace <#= model.Namespace #>
     <# } #>
 
     <# foreach(var table in model.LookUpTables) { #>
-    public List<<#= table.TableName#>> <#= table.TableName#>s { get; set; }
+    public List<<#= table.TableName#>>? <#= table.TableName#>s { get; set; }
     <# } #>
 
     }

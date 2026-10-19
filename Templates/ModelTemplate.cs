@@ -18,7 +18,7 @@ namespace USS.Tool.GenCRUD.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+    #line 1 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "18.0.0.0")]
     public partial class ModelTemplate : ModelTemplateBase
     {
@@ -30,98 +30,98 @@ namespace USS.Tool.GenCRUD.Templates
         {
             this.Write("\r\n\r\nusing USS.Base.Model;\r\n\r\nnamespace ");
             
-            #line 10 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 10 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public partial class ");
             
-            #line 12 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 12 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write(" : BaseEntityModel\r\n    {\r\n\r\n    ");
             
-            #line 15 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 15 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
  foreach(var field in model.Fields) { 
             
             #line default
             #line hidden
             this.Write("    public ");
             
-            #line 16 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 16 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.DataType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 16 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 16 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n    ");
             
-            #line 17 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 17 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n    ");
             
-            #line 19 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 19 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
  foreach(var field in model.References) { 
             
             #line default
             #line hidden
             this.Write("    public ");
             
-            #line 20 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 20 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Reference.TableName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 20 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 20 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Reference.TableName));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n    ");
             
-            #line 21 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 21 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n    ");
             
-            #line 23 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 23 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
  foreach(var table in model.LookUpTables) { 
             
             #line default
             #line hidden
             this.Write("    public List<");
             
-            #line 24 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 24 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.TableName));
             
             #line default
             #line hidden
-            this.Write("> ");
+            this.Write(">? ");
             
-            #line 24 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 24 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.TableName));
             
             #line default
             #line hidden
             this.Write("s { get; set; }\r\n    ");
             
-            #line 25 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
+            #line 25 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\ModelTemplate.tt"
  } 
             
             #line default
