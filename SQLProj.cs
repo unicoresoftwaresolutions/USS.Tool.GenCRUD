@@ -4,12 +4,6 @@ namespace USS.Tool.GenCRUD
 {
     internal static class SQLProj
     {
-        private static readonly string[] args;
-
-        static SQLProj()
-        {
-            args = Environment.GetCommandLineArgs().Skip(1).ToArray();
-        }
 
         public static string SQLProjFile 
         { 
@@ -17,13 +11,12 @@ namespace USS.Tool.GenCRUD
             {
                 if(string.IsNullOrEmpty(field))
                 {
-                    field = args.FirstOrDefault(x => x.EndsWith(".sqlproj", StringComparison.OrdinalIgnoreCase));
+                    field = SolutionInfo.args.FirstOrDefault(x => x.EndsWith(".sqlproj", StringComparison.OrdinalIgnoreCase));
 
                     if (field == null)
                     {
                         foreach (var file in Directory.GetFiles(Environment.CurrentDirectory, "*.sqlproj", SearchOption.AllDirectories))
                         {
-                            field = file;
                             field = file;
                             break;
                         }
@@ -49,7 +42,7 @@ namespace USS.Tool.GenCRUD
         {
             get
             {
-                if (string.IsNullOrEmpty(field))
+                if (string.IsNullOrEmpty(field) && !string.IsNullOrEmpty(sqlProjFileDir))
                 {
                     field = Directory.GetParent(sqlProjFileDir)?.FullName ?? "";
                 }
@@ -84,7 +77,7 @@ namespace USS.Tool.GenCRUD
                 {
                     field = new List<string>();
 
-                    var argSqlFiles = args.Where(x => x.EndsWith(".sql", StringComparison.OrdinalIgnoreCase)).ToList();
+                    var argSqlFiles = SolutionInfo.args.Where(x => x.EndsWith(".sql", StringComparison.OrdinalIgnoreCase)).ToList();
 
                     try
                     {
@@ -127,10 +120,10 @@ namespace USS.Tool.GenCRUD
 
         public static string SQLRootNameSpace
         {
-            get => SqlProjDocument.Descendants().Where(x => x.Name.LocalName == "RootNamespace").FirstOrDefault()?.Value??string.Empty;
+            get => (SqlProjDocument?.Descendants().Where(x => x.Name.LocalName == "RootNamespace").FirstOrDefault()?.Value)??string.Empty;
         }
 
-        public static string RootNamespace { get => SQLRootNameSpace.Substring(0, SQLRootNameSpace.Length - 4); }
+        public static string RootNamespace { get => string.IsNullOrEmpty(SQLRootNameSpace)?String.Empty : SQLRootNameSpace.Substring(0, SQLRootNameSpace.Length - 4); }
         public static bool IsValid
         {
             get
@@ -149,7 +142,6 @@ namespace USS.Tool.GenCRUD
                     }
                     Console.WriteLine($"SQL Project File: {SQLProjFile}");
 
-                    List<String> SqlFiles = SQLProj.SqlFiles;
                     if(SqlFiles.Count == 0)
                     {
                         Console.WriteLine("No SQL files found in the .sqlproj file.");

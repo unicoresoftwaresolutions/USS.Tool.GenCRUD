@@ -137,5 +137,45 @@ namespace USS.Tool.GenCRUD
             }
         }
 
+
+
+        public static List<SQLFieldType> Types
+        {
+            get
+            {
+
+                if (field == null)
+                {
+                    field = new List<SQLFieldType>();
+
+                    field.Add(new SQLFieldType() { DataType = "UNIQUEIDENTIFIER", FieldType = "Guid" });
+
+                    field.Add(new SQLFieldType() { DataType = "NVARCHAR", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "VARCHAR", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "CHAR", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "TEXT", FieldType = "string" });
+
+                    field.Add(new SQLFieldType() { DataType = "DATETIME", FieldType = "DateTime" });
+                    field.Add(new SQLFieldType() { DataType = "DATE", FieldType = "DateOnly" });
+
+                    field.Add(new SQLFieldType() { DataType = "BIT", FieldType = "bool" });
+
+                    field.Add(new SQLFieldType() { DataType = "TINYINT", FieldType = "byte" });
+                    field.Add(new SQLFieldType() { DataType = "SMALLINT", FieldType = "short" });
+                    field.Add(new SQLFieldType() { DataType = "INT", FieldType = "int" });
+                    field.Add(new SQLFieldType() { DataType = "BIGINT", FieldType = "long" });
+
+                    field.Add(new SQLFieldType() { DataType = "FLOAT", FieldType = "float" });
+                    field.Add(new SQLFieldType() { DataType = "REAL", FieldType = "float" });
+                    field.Add(new SQLFieldType() { DataType = "DECIMAL", FieldType = "decimal" });
+                    field.Add(new SQLFieldType() { DataType = "SMALLMONEY", FieldType = "decimal" });
+                    field.Add(new SQLFieldType() { DataType = "MONEY", FieldType = "decimal" });
+
+                    field.Add(new SQLFieldType() { DataType = "VARBINARY", FieldType = "byte[]" });
+                    field.Add(new SQLFieldType() { DataType = "BINARY", FieldType = "byte[]" });
+                }
+                return field;
+            }
+        }
     }
 }

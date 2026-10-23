@@ -1,12 +1,12 @@
 ﻿using USS.Tool.GenCRUD;
-if(SQLProj.IsValid)
+if(SolutionInfo.IsAPIProj || SolutionInfo.IsSQLProj)
 {
     Console.WriteLine("Starting CRUD generation...");
-    SolutionInfo.Generate(true);
+    Console.WriteLine(SolutionInfo.Name);
     Console.WriteLine("CRUD generation completed.");
 }
 else
 {
-    Console.WriteLine("SQL project is not valid.");
+    Console.WriteLine("project is not valid.");
     return;
 }
