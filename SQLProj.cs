@@ -11,7 +11,6 @@ namespace USS.Tool.GenCRUD
             args = Environment.GetCommandLineArgs().Skip(1).ToArray();
         }
 
-        
         public static string SQLProjFile 
         { 
             get 
@@ -176,7 +175,7 @@ namespace USS.Tool.GenCRUD
                     field = new List<SQLTable>();
                     foreach (var sqlfile in SqlFiles)
                     {
-                        SQLTable table = new SQLTable(sqlfile);
+                        SQLTable table = new(new(new(sqlfile)));
                         field.Add(table);
                     }
                 }

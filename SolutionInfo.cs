@@ -136,7 +136,6 @@ namespace USS.Tool.GenCRUD
             File.WriteAllText(filePath, content);
         }
 
-
         public static void GenerateUIServiceDI(bool IsOverRide = false)
         {
             UIServiceDITemplate uiServiceDITemplate = new UIServiceDITemplate(ProjectModels);

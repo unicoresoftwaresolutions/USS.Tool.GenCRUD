@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text.RegularExpressions;
 
 namespace USS.Tool.GenCRUD
 {
@@ -9,51 +7,134 @@ namespace USS.Tool.GenCRUD
         public String Name { get; set; }
         public String DataType { get; set; }
         public int DataSize { get; set; }
-        // Foreign key / REFERENCES detail (single)
         public SQLReferenceInfo Reference { get; set; }
 
-        // Helper: indicates whether this field has a foreign key reference
         public bool HasForeignKey => Reference?.IsForeignKey == true;
 
-        // Helper: returns a display string for the reference, or null if none
-        public string GetReferenceDisplay(bool includeSchema = true)
+        public static SQLFieldInfo Parse(String Detail)
         {
-            if (Reference == null)
-                return null;
+            var tokens = Regex.Split(Detail, @"\s+");
+            if (tokens.Length == 0) return null;
+            var colName = tokens[0].Trim().Trim('"', '[', ']', '`');
+            if (string.IsNullOrEmpty(colName)) return null;
 
-            var schema = string.IsNullOrWhiteSpace(Reference.ReferenceSchema) ? null : Reference.ReferenceSchema.Trim();
-            var table = (Reference.ReferenceTableName ?? string.Empty).Trim();
-            var field = (Reference.ReferenceFieldName ?? string.Empty).Trim();
-
-            if (string.IsNullOrEmpty(table) && string.IsNullOrEmpty(field))
-                return null;
-
-            var sb = new StringBuilder();
-            if (includeSchema && !string.IsNullOrEmpty(schema))
+            var rest = Detail.Substring(Detail.IndexOf(tokens[0]) + tokens[0].Length).Trim();
+            if (string.IsNullOrEmpty(rest))
             {
-                sb.Append('[').Append(schema).Append(']').Append('.');
+                return new SQLFieldInfo { Name = colName };
             }
 
-            if (!string.IsNullOrEmpty(table))
+            var dtypeMatch = Regex.Match(rest, @"^([A-Za-z0-9_]+)\s*(\(([^\)]+)\))?", RegexOptions.IgnoreCase);
+            string dtype = null; int dsize = 0;
+            if (dtypeMatch.Success)
             {
-                // preserve existing brackets if present
-                if (table.StartsWith("[") && table.EndsWith("]")) sb.Append(table);
-                else sb.Append('[').Append(table).Append(']');
+                dtype = dtypeMatch.Groups[1].Value;
+                var sizeGrp = dtypeMatch.Groups[3].Value;
+                if (!string.IsNullOrEmpty(sizeGrp))
+                {
+                    var numMatch = Regex.Match(sizeGrp, @"(\d+)");
+                    if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out var n))
+                        dsize = n;
+                }
             }
 
-            if (!string.IsNullOrEmpty(field))
+            var fieldInfo = new SQLFieldInfo
             {
-                sb.Append('.');
-                if (field.StartsWith("[") && field.EndsWith("]")) sb.Append(field);
-                else sb.Append('[').Append(field).Append(']');
-            }
+                Name = colName,
+                DataType = dtype,
+                DataSize = dsize
+            };
 
-            if (!string.IsNullOrEmpty(Reference.ReferenceConstraintName))
+            var inlineRef = Regex.Match(rest, @"REFERENCES\s+([\[\]`""\w\.]+)\s*\(([^\)]+)\)", RegexOptions.IgnoreCase);
+            if (inlineRef.Success)
             {
-                sb.Append(" (constraint: ").Append(Reference.ReferenceConstraintName).Append(')');
+                var refRaw = inlineRef.Groups[1].Value.Trim();
+                var refFld = inlineRef.Groups[2].Value.Trim().Trim('"', '[', ']', '`');
+                string refSchema = null;
+                var refTbl = refRaw;
+                if (refRaw.Contains('.'))
+                {
+                    var p = refRaw.Split('.');
+                    refSchema = p.Length > 1 ? p[p.Length - 2].Trim('"', '[', ']', '`') : null;
+                    refTbl = p[p.Length - 1].Trim('"', '[', ']', '`');
+                }
+                var rinfo = new SQLReferenceInfo
+                {
+                    ReferenceSchema = refSchema,
+                    ReferenceTableName = refTbl.Trim('"', '[', ']', '`'),
+                    ReferenceFieldName = refFld,
+                    IsForeignKey = true
+                };
+                fieldInfo.Reference = rinfo;
             }
+            return fieldInfo;
+        }
 
-            return sb.ToString();
+        public static void SetReference(String Detail, List<SQLFieldInfo> allFields)
+        {
+
+            var mref = Regex.Match(Detail, @"REFERENCES\s+([\[\]`""\w\.]+)\s*\(([^\)]+)\)", RegexOptions.IgnoreCase);
+            if (mref.Success)
+            {
+                var refTableRaw = mref.Groups[1].Value.Trim();
+                var refFieldList = mref.Groups[2].Value.Trim();
+
+                string refSchema = null;
+                var refTable = refTableRaw;
+                if (refTableRaw.Contains('.'))
+                {
+                    var p = refTableRaw.Split('.');
+                    refSchema = p.Length > 1 ? p[p.Length - 2].Trim('"', '[', ']', '`') : null;
+                    refTable = p[p.Length - 1].Trim('"', '[', ']', '`');
+                }
+
+                var localMatch = Regex.Match(Detail, @"FOREIGN\s+KEY\s*\(([^\)]+)\)", RegexOptions.IgnoreCase);
+                var localCols = new List<string>();
+                if (localMatch.Success)
+                {
+                    var rawLocal = localMatch.Groups[1].Value;
+                    var pieces = rawLocal.Split(',');
+                    foreach (var p in pieces)
+                    {
+                        var n = p.Trim().Trim('"', '[', ']', '`');
+                        if (!string.IsNullOrEmpty(n)) localCols.Add(n);
+                    }
+                }
+
+                string constraintName = null;
+                var cname = Regex.Match(Detail, @"CONSTRAINT\s+([^\s(]+)", RegexOptions.IgnoreCase);
+                if (cname.Success)
+                    constraintName = cname.Groups[1].Value.Trim().Trim('"', '[', ']', '`');
+
+                var refFields = new List<string>();
+                if (!string.IsNullOrEmpty(refFieldList))
+                {
+                    var rfParts = refFieldList.Split(',');
+                    foreach (var rp in rfParts)
+                    {
+                        var rn = rp.Trim().Trim('"', '[', ']', '`');
+                        if (!string.IsNullOrEmpty(rn)) refFields.Add(rn);
+                    }
+                }
+
+                foreach (var localCol in localCols)
+                {
+                    if (string.IsNullOrEmpty(localCol)) continue;
+                    var fkField = allFields.Find(f => string.Equals(f.Name, localCol, StringComparison.OrdinalIgnoreCase));
+                    if (fkField != null)
+                    {
+                        var refInfo = new SQLReferenceInfo
+                        {
+                            ReferenceSchema = refSchema,
+                            ReferenceTableName = refTable,
+                            ReferenceFieldName = refFields.Count > 0 ? refFields[0] : null,
+                            ReferenceConstraintName = constraintName,
+                            IsForeignKey = true
+                        };
+                        fkField.Reference = refInfo;
+                    }
+                }
+            }
         }
 
     }
