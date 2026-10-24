@@ -55,7 +55,14 @@ namespace USS.Tool.GenCRUD.Templates
             
             #line default
             #line hidden
-            this.Write("    public DbSet<Fund> ");
+            this.Write("    public DbSet<");
+            
+            #line 25 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\MainDBContextTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(className));
+            
+            #line default
+            #line hidden
+            this.Write("> ");
             
             #line 25 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\MainDBContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(className));

@@ -77,6 +77,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GridComponentTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Update="Templates\GridModelMenuTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GridModelMenuTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\MainDBContextTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -131,6 +136,10 @@
     <None Update="Templates\GridComponentTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>GridComponentTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\GridModelMenuTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>GridModelMenuTemplate.cs</LastGenOutput>
     </None>
     <None Update="Templates\MainDBContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

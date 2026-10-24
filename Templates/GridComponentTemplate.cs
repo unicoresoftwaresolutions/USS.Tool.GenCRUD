@@ -18,7 +18,7 @@ namespace USS.Tool.GenCRUD.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
+    #line 1 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "18.0.0.0")]
     public partial class GridComponentTemplate : GridComponentTemplateBase
     {
@@ -28,23 +28,23 @@ namespace USS.Tool.GenCRUD.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("@page \"/");
+            this.Write("@page \"/Grid/");
             
-            #line 6 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
+            #line 6 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write("\"\r\n@inherits BaseWeb<");
             
-            #line 7 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
+            #line 7 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write(">\r\n\r\n@rendermode InteractiveServer\r\n\r\n<h3>");
             
-            #line 11 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
+            #line 11 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
@@ -53,28 +53,28 @@ namespace USS.Tool.GenCRUD.Templates
                     "   IdVisible=\"false\"\r\n          OnAdd=\"@( x => { Add(); })\" \r\n          OnCancel" +
                     "=\"@( (BaseGridModel<");
             
-            #line 17 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
+            #line 17 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write("> x) => { Cancel(x); })\"\r\n          OnEdit=\"@( (BaseGridModel<");
             
-            #line 18 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
+            #line 18 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write("> x) => { Edit(x); })\"\r\n          OnSave=\"@( (BaseGridModel<");
             
-            #line 19 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
+            #line 19 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default
             #line hidden
             this.Write("> x) => { Save(x); })\"\r\n          OnDelete=\"@( (BaseGridModel<");
             
-            #line 20 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
+            #line 20 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\GridComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassName));
             
             #line default

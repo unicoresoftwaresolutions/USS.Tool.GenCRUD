@@ -122,6 +122,7 @@ namespace USS.Tool.GenCRUD
                 GenerateAPIServiceDI(true);
                 GenerateUIServiceDI(true);
                 GenerateMainDBContext(true);
+                GenerateUIGridModelMenu(true);
             }
         }
 
@@ -154,6 +155,18 @@ namespace USS.Tool.GenCRUD
             MainDBContextTemplate mainDBContextTemplate = new MainDBContextTemplate(ProjectModels);
             string content = mainDBContextTemplate.TransformText();
             string filePath = Path.Combine(SolutionInfo.Projects.FirstOrDefault(x => x.Name == ProjectNames.Data).Path, "MainDBContext.cs");
+            if (File.Exists(filePath) && !IsOverRide)
+            {
+                return;
+            }
+            File.WriteAllText(filePath, content);
+        }
+
+        public static void GenerateUIGridModelMenu(bool IsOverRide = false)
+        {
+            GridModelMenuTemplate gridModelMenuTemplate = new GridModelMenuTemplate(ProjectModels);
+            string content = gridModelMenuTemplate.TransformText();
+            string filePath = Path.Combine(SolutionInfo.Projects.FirstOrDefault(x => x.Name == ProjectNames.Web).Path, "Components", "Layout", "GridModelMenu.razor");
             if (File.Exists(filePath) && !IsOverRide)
             {
                 return;

@@ -22,7 +22,7 @@ namespace <#= RootNamespace #>.Data
         {
             var className = model.ClassName;
     #>
-    public DbSet<Fund> <#= className #> { get; set; }
+    public DbSet<<#= className #>> <#= className #> { get; set; }
     <#
         }
     #>

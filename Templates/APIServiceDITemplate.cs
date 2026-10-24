@@ -18,7 +18,7 @@ namespace USS.Tool.GenCRUD.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+    #line 1 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "18.0.0.0")]
     public partial class APIServiceDITemplate : APIServiceDITemplateBase
     {
@@ -30,35 +30,35 @@ namespace USS.Tool.GenCRUD.Templates
         {
             this.Write("\r\n\r\nusing ");
             
-            #line 8 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 8 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Business;\r\nusing ");
             
-            #line 9 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 9 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Business.Interface;\r\nusing ");
             
-            #line 10 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 10 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Data;\r\nusing ");
             
-            #line 11 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 11 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Data.Interface;\r\n\r\nnamespace ");
             
-            #line 13 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 13 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
@@ -66,7 +66,7 @@ namespace USS.Tool.GenCRUD.Templates
             this.Write(".ApiService\r\n{\r\n    public static class ServiceDI\r\n    {\r\n        public static v" +
                     "oid AddServiceDI(this IServiceCollection services)\r\n        {\r\n\r\n            ");
             
-            #line 20 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 20 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
 
                 foreach (var model in models)
                 {
@@ -77,35 +77,35 @@ namespace USS.Tool.GenCRUD.Templates
             #line hidden
             this.Write("\r\n            services.AddScoped<I");
             
-            #line 26 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 26 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(className));
             
             #line default
             #line hidden
             this.Write("Data, ");
             
-            #line 26 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 26 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(className));
             
             #line default
             #line hidden
             this.Write("Data>();\r\n            services.AddScoped<I");
             
-            #line 27 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 27 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(className));
             
             #line default
             #line hidden
             this.Write("Business, ");
             
-            #line 27 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 27 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(className));
             
             #line default
             #line hidden
             this.Write("Business>();\r\n            ");
             
-            #line 28 "C:\Users\Bala\source\repos\unicoresoftwaresolutions\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
+            #line 28 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\APIServiceDITemplate.tt"
 
                 }
             
