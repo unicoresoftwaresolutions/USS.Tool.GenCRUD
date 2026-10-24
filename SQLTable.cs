@@ -7,6 +7,10 @@
             TableName = qry.TableName;
             Fields = qry.Fields;
         }
+        public SQLTable(string TableName)
+        {
+            this.TableName = TableName;
+        }
 
         public string TableName { get; set; }
         public List<SQLFieldInfo> Fields { get; set; }

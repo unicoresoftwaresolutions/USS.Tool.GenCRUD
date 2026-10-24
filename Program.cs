@@ -2,7 +2,7 @@
 if(SolutionInfo.IsAPIProj || SolutionInfo.IsSQLProj)
 {
     Console.WriteLine("Starting CRUD generation...");
-    Console.WriteLine(SolutionInfo.Name);
+    SolutionInfo.Generate(true);
     Console.WriteLine("CRUD generation completed.");
 }
 else

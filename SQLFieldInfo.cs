@@ -8,6 +8,7 @@ namespace USS.Tool.GenCRUD
         public String DataType { get; set; }
         public int DataSize { get; set; }
         public SQLReferenceInfo Reference { get; set; }
+        public bool IsNullable { get; set; }
 
         public bool HasForeignKey => Reference?.IsForeignKey == true;
 
@@ -136,8 +137,6 @@ namespace USS.Tool.GenCRUD
                 }
             }
         }
-
-
 
         public static List<SQLFieldType> Types
         {

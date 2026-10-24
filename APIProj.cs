@@ -2,7 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
-
+using Microsoft.Data.SqlClient;
+using Dapper;
 
 namespace USS.Tool.GenCRUD
 {
@@ -122,7 +123,24 @@ namespace USS.Tool.GenCRUD
         {
             get
             {
-                return new List<SQLTable>();
+                if (field == null)
+                {
+                    var con = new SqlConnection(DefaultConnection);
+                    var resultTables = con.Query<SQLTable>("SELECT name as TableName FROM sys.tables ORDER BY name;").ToList();
+                    foreach (var t in resultTables)
+                    {
+                        var qry = $"SELECT c.name AS Name,ty.name AS DataType,c.max_length AS DataSize,c.is_nullable AS IsNullable FROM sys.tables AS t INNER JOIN sys.all_columns AS c ON t.object_id = c.object_id INNER JOIN sys.types AS ty ON c.user_type_id = ty.user_type_id where t.name = '{t.TableName}' order by c.column_id";
+                        var resultFields = con.Query<SQLFieldInfo>(qry).ToList();
+                        t.Fields = new List<SQLFieldInfo>();
+                        foreach (var f in resultFields)
+                        {
+                            t.Fields.Add(f);
+                        }
+                    }
+                    field = resultTables;
+                }
+
+                return field;
             }
         }
 

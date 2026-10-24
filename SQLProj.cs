@@ -167,7 +167,7 @@ namespace USS.Tool.GenCRUD
                     field = new List<SQLTable>();
                     foreach (var sqlfile in SqlFiles)
                     {
-                        SQLTable table = new(new(new(sqlfile)));
+                        SQLTable table = new SQLTable(new SQLCreateQuery(new SQLFile(sqlfile)));
                         field.Add(table);
                     }
                 }

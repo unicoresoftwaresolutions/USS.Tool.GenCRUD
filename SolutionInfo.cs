@@ -57,6 +57,17 @@ namespace USS.Tool.GenCRUD
             }
         } 
 
+        public static List<SQLTable> Tables
+        {
+            get
+            {
+                if (field == null)
+                {
+                    field = IsAPIProj ? APIProj.tables : SQLProj.tables;
+                }
+                return field;
+            }
+        }
         public static List<ProjectModel> ProjectModels
         {
             get
@@ -66,9 +77,8 @@ namespace USS.Tool.GenCRUD
                     ProjectModel.project = Projects.FirstOrDefault(x=> x.Name==ProjectNames.Model);
                     field = new List<ProjectModel>();
 
-                    var tables = IsAPIProj ? APIProj.tables : SQLProj.tables;
 
-                    tables.ForEach(table =>
+                    Tables.ForEach(table =>
                     {
                         field.Add(new ProjectModel(table));
                     });

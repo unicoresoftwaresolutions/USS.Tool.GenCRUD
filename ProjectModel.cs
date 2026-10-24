@@ -246,9 +246,9 @@ namespace USS.Tool.GenCRUD
                 {
                     field = Table.Fields.Where(x=> x.Name != "Id").ToList();
                 }
-                foreach (var fieldType in SQLFieldInfo.Types.Where(x=> field.Any(f => f.DataType == x.DataType)).ToList())
+                foreach (var fieldType in SQLFieldInfo.Types.Where(x=> field.Any(f => f.DataType.ToLower() == x.DataType.ToLower())).ToList())
                 {
-                    foreach (var item in field.Where(x => x.DataType == fieldType.DataType).ToList())
+                    foreach (var item in field.Where(x => x.DataType.ToLower() == fieldType.DataType.ToLower()).ToList())
                     {
                         item.DataType = fieldType.FieldType;
                     }
