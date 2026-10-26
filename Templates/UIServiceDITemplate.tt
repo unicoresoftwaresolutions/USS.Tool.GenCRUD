@@ -9,18 +9,15 @@ namespace <#= RootNamespace #>.Web
     {
         public static void AddServiceDI(this IServiceCollection services)
         {
-            services.AddScoped<FundService>();
-            services.AddScoped<JournalTypeService>();
-
             <#
                 foreach (var model in models)
                 {
                     var className = model.ClassName;
             #>
             services.AddScoped<<#= className #>Service>();
-            <#
+<#
                 }
-            #>
+#>
         }
     }
 }

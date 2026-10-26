@@ -250,7 +250,7 @@ namespace USS.Tool.GenCRUD
                 {
                     foreach (var item in field.Where(x => x.DataType.ToLower() == fieldType.DataType.ToLower()).ToList())
                     {
-                        item.DataType = fieldType.FieldType;
+                        item.DataType = item.IsNullable? $"{fieldType.FieldType}?" : fieldType.FieldType;
                     }
                 }
                 return field;

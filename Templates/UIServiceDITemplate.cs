@@ -18,7 +18,7 @@ namespace USS.Tool.GenCRUD.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
+    #line 1 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "18.0.0.0")]
     public partial class UIServiceDITemplate : UIServiceDITemplateBase
     {
@@ -30,17 +30,15 @@ namespace USS.Tool.GenCRUD.Templates
         {
             this.Write("namespace ");
             
-            #line 6 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
+            #line 6 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Web\r\n{\r\n    public static class ServiceDI\r\n    {\r\n        public static void Add" +
-                    "ServiceDI(this IServiceCollection services)\r\n        {\r\n            services.Add" +
-                    "Scoped<FundService>();\r\n            services.AddScoped<JournalTypeService>();\r\n\r" +
-                    "\n            ");
+                    "ServiceDI(this IServiceCollection services)\r\n        {\r\n            ");
             
-            #line 15 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
+            #line 12 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
 
                 foreach (var model in models)
                 {
@@ -51,17 +49,17 @@ namespace USS.Tool.GenCRUD.Templates
             #line hidden
             this.Write("            services.AddScoped<");
             
-            #line 20 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
+            #line 17 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(className));
             
             #line default
             #line hidden
-            this.Write("Service>();\r\n            ");
+            this.Write("Service>();\r\n");
             
-            #line 21 "C:\Users\Admin\source\repos\USS.Kanakkedu\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
+            #line 18 "C:\Users\Admin\source\repos\USS.Tool.GenCRUD\Templates\UIServiceDITemplate.tt"
 
                 }
-            
+
             
             #line default
             #line hidden

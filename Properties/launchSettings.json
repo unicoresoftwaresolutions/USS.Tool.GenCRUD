@@ -2,7 +2,7 @@
   "profiles": {
     "USS.Tool.GenCRUD": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\Admin\\source\\repos\\test\\Test.App07\\Test.App07\\Test.App07.ApiService\\Test.App07.ApiService.csproj"
+      "commandLineArgs": "C:\\Users\\Admin\\source\\repos\\test\\Test.App09\\Test.App09\\Test.App09.ApiService\\Test.App09.ApiService.csproj"
     }
   }
 }
