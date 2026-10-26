@@ -11,7 +11,7 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
 
     <PackageId>UnicoreSoftwareSolutions.Tool.GenCRUD</PackageId>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <Title>Generate CRUD UI and API Code</Title>
     <Authors>Unicore Software Solutions</Authors>
     <Description> A tool for generating CRUD UI and API code for ASP.NET Core applications.</Description>
