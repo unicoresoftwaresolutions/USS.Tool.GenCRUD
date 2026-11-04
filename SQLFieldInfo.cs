@@ -153,9 +153,26 @@ namespace USS.Tool.GenCRUD
                     field.Add(new SQLFieldType() { DataType = "VARCHAR", FieldType = "string" });
                     field.Add(new SQLFieldType() { DataType = "CHAR", FieldType = "string" });
                     field.Add(new SQLFieldType() { DataType = "TEXT", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "NCHAR", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "NTEXT", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "image", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "json", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "xml", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "geography", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "geometry", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "sql_variant", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "vector", FieldType = "string" });
+                    field.Add(new SQLFieldType() { DataType = "hierarchyid", FieldType = "string" });
+
+
 
                     field.Add(new SQLFieldType() { DataType = "DATETIME", FieldType = "DateTime" });
                     field.Add(new SQLFieldType() { DataType = "DATE", FieldType = "DateOnly" });
+                    field.Add(new SQLFieldType() { DataType = "datetime2", FieldType = "DateTime" });
+                    field.Add(new SQLFieldType() { DataType = "datetimeoffset", FieldType = "DateTime" });
+                    field.Add(new SQLFieldType() { DataType = "smalldatetime", FieldType = "DateTime" });
+                    field.Add(new SQLFieldType() { DataType = "time", FieldType = "DateTime" });
+                    field.Add(new SQLFieldType() { DataType = "timestamp", FieldType = "DateTime" });
 
                     field.Add(new SQLFieldType() { DataType = "BIT", FieldType = "bool" });
 
@@ -164,12 +181,12 @@ namespace USS.Tool.GenCRUD
                     field.Add(new SQLFieldType() { DataType = "INT", FieldType = "int" });
                     field.Add(new SQLFieldType() { DataType = "BIGINT", FieldType = "long" });
 
-                    field.Add(new SQLFieldType() { DataType = "FLOAT", FieldType = "float" });
+                    field.Add(new SQLFieldType() { DataType = "FLOAT", FieldType = "double" });
                     field.Add(new SQLFieldType() { DataType = "REAL", FieldType = "float" });
                     field.Add(new SQLFieldType() { DataType = "DECIMAL", FieldType = "decimal" });
                     field.Add(new SQLFieldType() { DataType = "SMALLMONEY", FieldType = "decimal" });
                     field.Add(new SQLFieldType() { DataType = "MONEY", FieldType = "decimal" });
-
+                    field.Add(new SQLFieldType() { DataType = "NUMERIC", FieldType = "decimal" }); 
                     field.Add(new SQLFieldType() { DataType = "VARBINARY", FieldType = "byte[]" });
                     field.Add(new SQLFieldType() { DataType = "BINARY", FieldType = "byte[]" });
                 }
