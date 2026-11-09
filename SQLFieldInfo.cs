@@ -172,7 +172,7 @@ namespace USS.Tool.GenCRUD
                     field.Add(new SQLFieldType() { DataType = "datetimeoffset", FieldType = "DateTime" });
                     field.Add(new SQLFieldType() { DataType = "smalldatetime", FieldType = "DateTime" });
                     field.Add(new SQLFieldType() { DataType = "time", FieldType = "DateTime" });
-                    field.Add(new SQLFieldType() { DataType = "timestamp", FieldType = "DateTime" });
+                    field.Add(new SQLFieldType() { DataType = "timestamp", FieldType = "byte[]" });
 
                     field.Add(new SQLFieldType() { DataType = "BIT", FieldType = "bool" });
 
